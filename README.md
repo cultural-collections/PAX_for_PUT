@@ -1,49 +1,18 @@
 # Create PAX packages for PUT Tool
 
-The code is looking for a structure where each folder in the given parent folder refers to the lowest level CALM record, and each of those folders contain mxed access and preservation copies to be sorted
+The code is looking for a structure where each folder in the given parent folder refers to the lowest level CALM record, and each of those folders contain mixed access and preservation copies to be sorted
 
 Example: Defining SB1 as the top directory
 
-SB1/
-  SB1-1/
-    SB-1-001.tif
-    SB-1-001.jpg
-    SB-1-002.tif
-    SB-1-002.jpg
-  SB1-2/
-    SB-2-001.tif
-    SB-2-001.jpg
-    SB-2-002.tif
-    SB-2-002.jpg
- etc...
+![Input Structure](https://i.ibb.co/fSH2q0m/1111.png)
 
-Would become
-
-SB1/
-  SB1-1/
-    SB1-1-001.pax/
-      Representation_Preservation/
-            SB-1-001.tif
-      Representation_Access/
-            SB-1-001.jpg
-    SB1-1-002.pax/
-      Representation_Preservation/
-            SB-1-002.tif
-      Representation_Access/
-            SB-1-002.jpg
-  SB1-2/
-    SB1-2-001.pax/
-      Representation_Preservation/
-            SB-2-001.tif
-      Representation_Access/
-            SB-2-001.jpg
-    SB1-2-002.pax/
-      Representation_Preservation/
-            SB-2-002.tif
-      Representation_Access/
-            SB-2-002.jpg
-
-
+ Becomes
+ 
+![Output Structure](https://i.ibb.co/f2RCjqc/222222.png)
+ 
 # Editing the config file
 
+In the config file, put the path to the top level directory in the top_dir field - it would be \Path\to\SB1 in the above example
+
+And change the .fmt in each of the formats to access and preservation formats, so the above example would be .tif and .jpg
 
