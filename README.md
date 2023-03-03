@@ -22,3 +22,8 @@ You have the option here to not create use a hardlinked version of the folder st
 
 # Running the code
 
+This code will still need to be run in the command line
+
+Download as a zip, extract it, edit the config file as needed, naviage to the extracted folder using 'CD', call python and then the name of the script
+
+![cli](https://i.ibb.co/YjVfHtC/33333333333.png)
