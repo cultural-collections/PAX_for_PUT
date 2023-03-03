@@ -4,9 +4,6 @@ import shutil, os, configparser
 config = configparser.ConfigParser()
 config.read('pax_config.cfg')
 
-# Get root directory from config file
-TOP_DIR = config.get('directory', 'top_dir')
-
 # Define the folders for PAX representations
 PRESERVATION_DIR = 'Representation_Preservation'
 ACCESS_DIR = 'Representation_Access'
@@ -15,8 +12,17 @@ ACCESS_DIR = 'Representation_Access'
 PRESERVATION_FMT = config.get('formats', 'preservation_format')
 ACCESS_FMT = config.get('formats', 'access_format')
 
+# Get root directory from config file
+def get_top_dir() -> str:
+    top_dir = config.get('directory', 'top_dir')
+    if config.getboolean('directory', 'use_hard_link'):
+        hard_link_dir = os.path.join(top_dir, os.path.basename(top_dir)+'_HARDLINK')
+        shutil.copytree(top_dir, hard_link_dir, copy_function=os.link)
+        top_dir = hard_link_dir   
+    return top_dir 
+    
 # Iterate over entire collection
-for root, dirs, files in os.walk(TOP_DIR):
+for root, dirs, files in os.walk(get_top_dir()):
 
     # Get required names for new sub-folders by stripping file extensions
     new_subfolders = [file.split('.')[0] for file in files]
