@@ -14,6 +14,8 @@ Example: Defining SB1 as the top directory
  
 # Editing the config file
 
+Open the file in notepad
+
 In the config file, put the path to the top level directory in the top_dir field - it would be \Path\to\SB1 in the above example
 
 And change the .fmt in each of the formats to access and preservation formats, so the above example would be .tif and .jpg
